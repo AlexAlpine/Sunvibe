@@ -59,7 +59,7 @@ const translations: Record<Language, Translation> = {
     },
     hero: {
       eyebrow: 'Туристичні консультації та організація подорожей',
-      title: 'Sunvibe Travel GbR - ваш надійний партнер для продуманих подорожей.',
+      title: 'Sunvibe Travel - ваш надійний партнер для продуманих подорожей.',
       text: 'Ми створюємо індивідуальні travel-досвіди з персональною підтримкою, уважним плануванням і сучасними рішеннями для мандрівників.',
       cta: 'Замовити консультацію',
     },
@@ -67,7 +67,7 @@ const translations: Record<Language, Translation> = {
       eyebrow: 'Про нас',
       title: 'Особисті поради, уважний сервіс і планування подорожей навколо ваших потреб.',
       body: [
-        'Sunvibe Travel GbR - сучасна туристична агенція, що спеціалізується на індивідуальних туристичних консультаціях і надійній організації подорожей. Ми допомагаємо перейти від ідеї до добре спланованої поїздки з ясністю та турботою.',
+        'Sunvibe Travel - сучасна туристична агенція, що спеціалізується на індивідуальних туристичних консультаціях і надійній організації подорожей. Ми допомагаємо перейти від ідеї до добре спланованої поїздки з ясністю та турботою.',
         'Наш підхід поєднує клієнтський сервіс, практичні знання про напрямки та цифрові туристичні рішення, щоб кожна подорож була комфортною, персональною та легкою для насолоди.',
       ],
     },
@@ -119,7 +119,7 @@ const translations: Record<Language, Translation> = {
     },
     hero: {
       eyebrow: 'Туристические консультации и организация поездок',
-      title: 'Sunvibe Travel GbR - ваш надежный партнер для продуманных путешествий.',
+      title: 'Sunvibe Travel - ваш надежный партнер для продуманных путешествий.',
       text: 'Мы создаем индивидуальные travel-впечатления с персональным сопровождением, внимательным планированием и современными решениями для путешественников.',
       cta: 'Заказать консультацию',
     },
@@ -127,7 +127,7 @@ const translations: Record<Language, Translation> = {
       eyebrow: 'О нас',
       title: 'Персональные советы, заботливый сервис и планирование поездок вокруг ваших целей.',
       body: [
-        'Sunvibe Travel GbR - современное туристическое агентство, которое специализируется на индивидуальных туристических консультациях и надежной организации поездок. Мы помогаем пройти путь от идеи до хорошо спланированного путешествия понятно и спокойно.',
+        'Sunvibe Travel - современное туристическое агентство, которое специализируется на индивидуальных туристических консультациях и надежной организации поездок. Мы помогаем пройти путь от идеи до хорошо спланированного путешествия понятно и спокойно.',
         'Наш подход объединяет заботу о клиенте, практические знания направлений и цифровые туристические решения, чтобы каждая поездка была комфортной, персональной и легкой.',
       ],
     },
@@ -179,7 +179,7 @@ const translations: Record<Language, Translation> = {
     },
     hero: {
       eyebrow: 'Tourismusberatung und Reisevermittlung',
-      title: 'Sunvibe Travel GbR ist Ihr zuverlässiger Partner für smartere Reisen.',
+      title: 'Sunvibe Travel ist Ihr zuverlässiger Partner für smartere Reisen.',
       text: 'Wir gestalten maßgeschneiderte Reiseerlebnisse mit persönlicher Beratung, durchdachter Planung und modernen Lösungen für Reisende von heute.',
       cta: 'Beratung buchen',
     },
@@ -187,7 +187,7 @@ const translations: Record<Language, Translation> = {
       eyebrow: 'Über uns',
       title: 'Persönliche Beratung, aufmerksame Betreuung und Reiseplanung nach Ihren Wünschen.',
       body: [
-        'Sunvibe Travel GbR ist eine moderne Reiseagentur mit Fokus auf individueller Tourismusberatung und zuverlässiger Reisevermittlung. Wir begleiten Kundinnen und Kunden von der ersten Inspiration bis zur klar geplanten Reise.',
+        'Sunvibe Travel ist eine moderne Reiseagentur mit Fokus auf individueller Tourismusberatung und zuverlässiger Reisevermittlung. Wir begleiten Kundinnen und Kunden von der ersten Inspiration bis zur klar geplanten Reise.',
         'Unser Ansatz verbindet kundenorientierten Service, praktisches Destinationswissen und digitale Reiselösungen, damit jede Reise reibungslos, persönlich und angenehm wird.',
       ],
     },
@@ -291,12 +291,14 @@ function HeroSection({ translation }: { translation: Translation['hero'] }) {
   return (
     <section id="home" className={styles.hero}>
       <div className={styles.heroContent}>
-        <p className={styles.eyebrow}>{translation.eyebrow}</p>
-        <h1>{translation.title}</h1>
-        <p className={styles.heroText}>{translation.text}</p>
-        <a className={styles.primaryCta} href="#contact">
-          {translation.cta}
-        </a>
+        <div>
+          <p className={styles.eyebrow}>{translation.eyebrow}</p>
+          <h1>{translation.title}</h1>
+          <p className={styles.heroText}>{translation.text}</p>
+          <a className={styles.primaryCta} href="#contact">
+            {translation.cta}
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -381,8 +383,13 @@ function Footer({ translation }: { translation: Translation['footer'] }) {
         Copyright © {new Date().getFullYear()} Sunvibe Travel GbR. {translation.copyright}.
       </p>
       <div className={styles.legalLinks}>
-        <a href="#impressum">{translation.impressum}</a>
-        <a href="#datenschutz">{translation.privacy}</a>
+        {/* Ссылки ведут на независимые страницы в корне домена */}
+        <a href="/impressum.html" target="_blank" rel="noopener noreferrer">
+          {translation.impressum}
+        </a>
+        <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">
+          {translation.privacy}
+        </a>
       </div>
     </footer>
   );

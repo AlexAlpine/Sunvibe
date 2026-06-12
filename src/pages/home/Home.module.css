@@ -91,35 +91,38 @@
   box-shadow: 0 0 0 3px rgba(231, 134, 50, 0.18);
 }
 
+/* ==================== СЕКЦИЯ HERO (ДВУХКОЛОНОЧНЫЙ ГРИД) ==================== */
 .hero {
   display: grid;
-  min-height: 720px;
   align-items: center;
-  padding: 5rem 1rem 6rem;
-}
-
-.heroContent,
-.section {
-  width: min(1120px, 100%);
-  margin: 0 auto;
+  min-height: 80vh;
+  padding: 6rem 1rem;
 }
 
 .heroContent {
   position: relative;
-  max-width: 780px;
-  margin-left: max(1rem, calc((100vw - 1120px) / 2));
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.heroContent > div:first-child {
+  max-width: 680px;
 }
 
 .heroContent::after {
-  position: absolute;
-  right: -22rem;
-  bottom: -4rem;
-  width: 30rem;
-  height: 20rem;
+  position: relative;
+  right: auto;
+  bottom: auto;
+  display: block;
+  width: 100%;
+  height: 28rem;
   border-radius: 1.5rem;
   background:
-    linear-gradient(rgba(13, 79, 92, 0.16), rgba(13, 79, 92, 0.16)),
-    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80")
+    url("/sunvibe_team.jpg")
       center/cover;
   box-shadow: 0 2rem 5rem rgba(25, 65, 73, 0.18);
   content: "";
@@ -139,20 +142,22 @@
   margin: 0;
   max-width: 780px;
   color: #17313a;
-  line-height: 1.02;
-  letter-spacing: 0;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
 .hero h1 {
-  font-size: clamp(3rem, 8vw, 6.8rem);
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .heroText {
   max-width: 620px;
   margin: 1.5rem 0 2rem;
   color: #4f6870;
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  line-height: 1.7;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  line-height: 1.6;
 }
 
 .primaryCta,
@@ -180,6 +185,7 @@
   transform: translateY(-2px);
 }
 
+/* ==================== ДРУГИЕ СЕКЦИИ И СЕТКИ ==================== */
 .section {
   padding: 5.5rem 1rem;
 }
@@ -338,6 +344,14 @@
   font-weight: 800;
 }
 
+/* ==================== АДАПТИВНОСТЬ: ПЛАНШЕТЫ И НОУТБУКИ ==================== */
+@media (max-width: 1024px) {
+  .heroContent {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2rem;
+  }
+}
+
 @media (max-width: 860px) {
   .header {
     grid-template-columns: 1fr auto auto;
@@ -351,18 +365,20 @@
     padding-bottom: 0.2rem;
   }
 
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
   .hero {
     min-height: auto;
     padding-top: 4rem;
   }
 
   .heroContent::after {
-    position: relative;
-    right: auto;
-    bottom: auto;
     display: block;
-    width: min(100%, 34rem);
-    height: 15rem;
+    width: 100%;
+    height: 18rem;
     margin-top: 3rem;
   }
 
@@ -377,6 +393,7 @@
   }
 }
 
+/* ==================== АДАПТИВНОСТЬ: СМАРТФОНЫ ==================== */
 @media (max-width: 560px) {
   .header {
     width: min(100% - 1rem, 1120px);
@@ -400,7 +417,8 @@
   }
 
   .hero h1 {
-    font-size: clamp(2.65rem, 16vw, 4.5rem);
+    font-size: clamp(1.65rem, 8vw, 2.3rem);
+    line-height: 1.15;
   }
 
   .section {
@@ -413,6 +431,9 @@
 
   .footer {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+    padding: 2rem 1rem;
   }
 }
